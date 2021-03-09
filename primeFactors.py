@@ -1,18 +1,17 @@
 # Finding the Prime Factors of a number
 
-n = int(input('Enter the Number : '))
-print('Factors are :')
+def prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return ','.join(set(str(x) for x in factors))
 
-i = 1
-while(i<=n):
-    k = 0
-    if(n%i==0):
-        j = 1
-        while(j<=1):
-            if(i%j==0):
-                k+=1
-            j+=1
-        
-        if(k==2):
-            print(i)
-    i+=1 
+for _ in range(int(input('Enter the number of times you would like to run the Program : '))):
+    print(prime_factors(int(input('Enter the Number : '))))
